@@ -50,7 +50,9 @@ export function SiteHeader() {
           aria-label={`${company.name} home`}
           className="inline-flex min-h-11 shrink-0 items-center"
         >
-          <Logo />
+          {/* Over the hero footage the header sits on a dark frame, so it
+              runs light until the first scroll lifts it onto paper. */}
+          <Logo tone={lifted ? "ink" : "paper"} />
         </a>
 
         <nav aria-label="Primary" className="hidden lg:block">
@@ -59,7 +61,9 @@ export function SiteHeader() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="label group relative py-2 text-mute transition-colors duration-[--duration-fast] hover:text-ink"
+                  className={`label group relative py-2 transition-colors duration-[--duration-fast] ${
+                    lifted ? "text-mute hover:text-ink" : "text-paper/80 hover:text-paper"
+                  }`}
                 >
                   {item.label}
                   <span
@@ -97,7 +101,11 @@ export function SiteHeader() {
             onClick={() => setOpen(true)}
             aria-label="Open menu"
             aria-expanded={open}
-            className="flex size-11 items-center justify-center border border-line-strong text-ink transition-colors hover:bg-stone lg:hidden"
+            className={`flex size-11 items-center justify-center border transition-colors lg:hidden ${
+              lifted
+                ? "border-line-strong text-ink hover:bg-stone"
+                : "border-paper/35 text-paper hover:bg-paper/10"
+            }`}
           >
             <List size={20} weight="bold" />
           </button>

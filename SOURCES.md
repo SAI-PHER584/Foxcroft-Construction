@@ -65,6 +65,36 @@ doing the heaviest lifting on the page.
 the right to use them? If they came off the Facebook page or a phone, we should
 get the originals. `[UNVERIFIED — confirm with client]`
 
+## The hero footage
+
+The live site's Projects section links a Videos page holding two YouTube
+embeds, both uploaded April 2016 by the account `@jfox1992`:
+
+| Video | Length | Source |
+|---|---|---|
+| Foxcroft Construction - Flat Roof, Stud Work and Plasterboarding | 43s | `[src: site]` `youtube.com/watch?v=yljIENW0nAw` |
+| Foxcroft Construction - Concrete and Timber Frames | 9s | `[src: site]` `youtube.com/watch?v=ZIBBYqvSIAs` |
+
+The hero uses one continuous segment of the first, t=2.2s to t=14.8s, which
+is the only stretch of either video that is outdoors, continuously framed and
+free of obstruction. The rest of that video cuts between interiors, and the
+9s video has a large out-of-focus object fixed in the left of frame
+throughout.
+
+Both are GoPro timelapses, so the segment was de-fisheyed (`lenscorrection`
+k1=-0.18), cropped 10% to drop the stretched edges and the camera housing,
+lifted in exposure, and encoded to 1152x648 at 24fps. Nothing was added to or
+removed from the frame. It is 1.3MB, and it is not served to phones at all.
+
+**Question for the client:** does he still hold the original camera files? A
+brighter day and a longer continuous take would make a far better hero, and
+the YouTube re-encode is the worst copy of this footage that exists.
+`[UNVERIFIED — confirm with client]`
+
+**Also for the client:** the videos sit on a personal YouTube account rather
+than a company one. Worth confirming who owns them before they anchor the
+homepage. `[UNVERIFIED — confirm with client]`
+
 ## The watermark
 
 Two of the six Windermere kitchen photographs carry a burned-in green overlay

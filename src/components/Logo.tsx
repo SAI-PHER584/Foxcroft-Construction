@@ -54,10 +54,12 @@ type LogoProps = {
 export function Logo({ tone = "ink", className = "" }: LogoProps) {
   const word = tone === "paper" ? "text-paper" : "text-ink";
   const sub = tone === "paper" ? "text-mute-dark" : "text-mute";
+  // The standard green does not hold up on a dark ground, so lift the mark.
+  const mark = tone === "paper" ? "text-brand-bright" : "text-brand";
 
   return (
     <span className={`flex items-center gap-3 ${className}`}>
-      <FoxcroftMark className="h-9 w-auto shrink-0 text-brand" title="Foxcroft Construction" />
+      <FoxcroftMark className={`h-9 w-auto shrink-0 ${mark}`} title="Foxcroft Construction" />
       <span className="flex flex-col leading-none">
         <span
           className={`font-display text-[1.15rem] leading-none font-extrabold tracking-[-0.01em] uppercase ${word}`}
