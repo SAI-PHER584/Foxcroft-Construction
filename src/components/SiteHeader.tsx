@@ -39,78 +39,84 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        lifted ? "border-b border-line bg-paper/92 backdrop-blur-md" : "border-b border-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-[74px] max-w-[1500px] items-center justify-between gap-6 px-5 md:h-[86px] md:px-8">
-        <a
-          href="#main"
-          aria-label={`${company.name} home`}
-          className="inline-flex min-h-11 shrink-0 items-center"
-        >
-          {/* Over the hero footage the header sits on a dark frame, so it
-              runs light until the first scroll lifts it onto paper. */}
-          <Logo tone={lifted ? "ink" : "paper"} />
-        </a>
-
-        <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-8">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className={`label group relative py-2 transition-colors duration-[--duration-fast] ${
-                    lifted ? "text-mute hover:text-ink" : "text-paper/80 hover:text-paper"
-                  }`}
-                >
-                  {item.label}
-                  <span
-                    aria-hidden
-                    className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-brand transition-transform duration-[--duration-base] ease-[--ease-out-soft] group-hover:scale-x-100"
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex items-center gap-2.5">
+    // The panel is a sibling of the header, not a child. Once scrolled, the
+    // header carries backdrop-blur, and a backdrop-filter makes an element the
+    // containing block for its fixed descendants: nested, the panel's inset-0
+    // resolved to the 74px header bar instead of the viewport.
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          lifted ? "border-b border-line bg-paper/92 backdrop-blur-md" : "border-b border-transparent"
+        }`}
+      >
+        <div className="mx-auto flex h-[74px] max-w-[1500px] items-center justify-between gap-6 px-5 md:h-[86px] md:px-8">
           <a
-            href={company.mobileHref}
-            className="hidden items-center gap-2.5 bg-brand px-5 py-3 text-paper transition-transform duration-[--duration-fast] ease-[--ease-out-soft] hover:-translate-y-px active:translate-y-0 active:scale-[0.98] sm:flex"
+            href="#main"
+            aria-label={`${company.name} home`}
+            className="inline-flex min-h-11 shrink-0 items-center"
           >
-            <Phone size={16} weight="fill" />
-            <span className="font-mono text-[0.8125rem] font-600 tracking-tight">
-              {company.mobile}
-            </span>
+            {/* Over the hero footage the header sits on a dark frame, so it
+                runs light until the first scroll lifts it onto paper. */}
+            <Logo tone={lifted ? "ink" : "paper"} />
           </a>
 
-          <a
-            href={company.mobileHref}
-            aria-label={`Call Foxcroft Construction on ${company.mobile}`}
-            className="flex size-11 items-center justify-center bg-brand text-paper active:scale-[0.96] sm:hidden"
-          >
-            <Phone size={18} weight="fill" />
-          </a>
+          <nav aria-label="Primary" className="hidden lg:block">
+            <ul className="flex items-center gap-8">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className={`label group relative py-2 transition-colors duration-[--duration-fast] ${
+                      lifted ? "text-mute hover:text-ink" : "text-paper/80 hover:text-paper"
+                    }`}
+                  >
+                    {item.label}
+                    <span
+                      aria-hidden
+                      className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-brand transition-transform duration-[--duration-base] ease-[--ease-out-soft] group-hover:scale-x-100"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          <button
-            ref={triggerRef}
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={open}
-            className={`flex size-11 items-center justify-center border transition-colors lg:hidden ${
-              lifted
-                ? "border-line-strong text-ink hover:bg-stone"
-                : "border-paper/35 text-paper hover:bg-paper/10"
-            }`}
-          >
-            <List size={20} weight="bold" />
-          </button>
+          <div className="flex items-center gap-2.5">
+            <a
+              href={company.mobileHref}
+              className="hidden items-center gap-2.5 bg-brand px-5 py-3 text-paper transition-transform duration-[--duration-fast] ease-[--ease-out-soft] hover:-translate-y-px active:translate-y-0 active:scale-[0.98] sm:flex"
+            >
+              <Phone size={16} weight="fill" />
+              <span className="font-mono text-[0.8125rem] font-600 tracking-tight">
+                {company.mobile}
+              </span>
+            </a>
+
+            <a
+              href={company.mobileHref}
+              aria-label={`Call Foxcroft Construction on ${company.mobile}`}
+              className="flex size-11 items-center justify-center bg-brand text-paper active:scale-[0.96] sm:hidden"
+            >
+              <Phone size={18} weight="fill" />
+            </a>
+
+            <button
+              ref={triggerRef}
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={open}
+              className={`flex size-11 items-center justify-center border transition-colors lg:hidden ${
+                lifted
+                  ? "border-line-strong text-ink hover:bg-stone"
+                  : "border-paper/35 text-paper hover:bg-paper/10"
+              }`}
+            >
+              <List size={20} weight="bold" />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       {open ? (
         <div
@@ -118,7 +124,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="mobile-menu-title"
-          className="fixed inset-0 z-50 flex flex-col bg-ink px-5 py-5 text-paper lg:hidden"
+          className="fixed inset-0 z-60 flex flex-col bg-ink px-5 py-5 text-paper lg:hidden"
         >
           <div className="flex items-center justify-between">
             <h2 id="mobile-menu-title" className="sr-only">
@@ -176,6 +182,6 @@ export function SiteHeader() {
           </div>
         </div>
       ) : null}
-    </header>
+    </>
   );
 }
