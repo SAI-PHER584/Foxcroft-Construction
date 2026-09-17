@@ -45,15 +45,17 @@ export function Process() {
           <Reveal delay={110} className="lg:col-span-5">
             <div className="relative h-full min-h-[400px] overflow-hidden bg-ink lg:min-h-[540px]">
               <Image
-                src="/work/nursery-front.jpg"
-                alt="The completed nursery building at Mossgate Park seen from the school approach"
+                src="/work/nursery-mossgate.jpg"
+                alt="The finished nursery entrance at Mossgate Park, with red doors under a deep timber eaves"
                 fill
                 sizes="(max-width: 1023px) 100vw, 40vw"
                 className="object-cover"
               />
+              {/* Dark enough at the foot to carry the quote, clear of the
+                  building above it. */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 via-40% to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 via-32% to-transparent to-72%"
               />
               <blockquote className="relative flex h-full flex-col justify-end p-7 md:p-9">
                 <p className="display-wide text-[clamp(1.45rem,2.6vw,2rem)] font-extrabold uppercase text-paper">

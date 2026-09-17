@@ -29,9 +29,11 @@ function ImageTile({
           sizes="(max-width: 767px) 100vw, 55vw"
           className="object-cover transition-transform duration-[900ms] ease-[--ease-out-soft] group-hover:scale-[1.05]"
         />
+        {/* These cards carry a title, sector and a line of copy, so the
+            scrim runs a little higher than on the work grid. */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 via-35% to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 via-34% to-transparent to-76%"
         />
         <div className="relative flex h-full flex-col justify-end p-6 md:p-8">
           {service.sector === "Domestic & commercial" ? null : (
@@ -128,7 +130,7 @@ export function Services() {
                 </p>
                 <a
                   href="#process"
-                  className="label group mt-7 inline-flex items-center gap-2 text-paper"
+                  className="label group mt-5 inline-flex min-h-11 items-center gap-2 text-paper"
                 >
                   How a Foxcroft job runs
                   <ArrowUpRight

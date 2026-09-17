@@ -27,8 +27,8 @@ export function Hero() {
   return (
     <section className="bg-paper">
       {/* Type block in daylight, photograph beneath it. */}
-      <div className="mx-auto max-w-[1500px] px-5 pt-32 pb-12 md:px-8 md:pt-36 md:pb-14">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+      <div className="mx-auto max-w-[1500px] px-5 pt-24 pb-8 md:px-8 md:pt-36 md:pb-14">
+        <div className="grid grid-cols-1 gap-7 sm:gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
           <div className="lg:col-span-8">
             <p
               className="rise label flex items-center gap-3 text-brand"
@@ -52,8 +52,11 @@ export function Hero() {
           </div>
 
           <div className="lg:col-span-4">
+            {/* Hidden on phones: the credential band directly below the hero
+                repeats 1989 and Family run, and dropping it here is what
+                lifts the photograph above the fold on a 844px screen. */}
             <dl
-              className="rise mb-9 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-7"
+              className="rise mb-9 hidden grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-7 sm:grid"
               style={{ "--rise-delay": "170ms" } as React.CSSProperties}
             >
               {specs.map((spec) => (
@@ -105,11 +108,14 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Full-bleed photograph, no heavy scrim over it */}
-      <div className="relative h-[54vh] min-h-[340px] w-full overflow-hidden md:h-[64vh] lg:h-[74vh]">
+      {/* Full-bleed photograph, no heavy scrim over it.
+          On phones the band takes the photograph's own 16:9 so the frame is
+          shown whole rather than cropped to a band of sky, and the whole thing
+          clears the fold. Taller viewport-relative bands from md up. */}
+      <div className="relative aspect-video w-full overflow-hidden md:aspect-auto md:h-[64vh] lg:h-[74vh]">
         <Image
           src="/work/hero-frame.jpg"
-          alt="A Foxcroft joiner working on the timber frame of a new single storey building"
+          alt="Timber frame walls standing on a completed floor deck at Mossgate Park, under open sky"
           fill
           priority
           sizes="100vw"

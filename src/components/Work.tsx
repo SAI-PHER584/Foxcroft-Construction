@@ -28,8 +28,8 @@ const sequence = [
     step: "Roof on",
   },
   {
-    src: "/work/nursery-deck.jpg",
-    alt: "The finished nursery exterior with a timber deck and red doors",
+    src: "/work/nursery-front.jpg",
+    alt: "The completed nursery building seen from the road, lit by late afternoon sun",
     step: "Handover",
   },
 ];
@@ -69,9 +69,11 @@ export function Work() {
                 sizes="(max-width: 767px) 100vw, 58vw"
                 className="object-cover transition-transform duration-[1000ms] ease-[--ease-out-soft] group-hover:scale-[1.05]"
               />
+              {/* Weighted to the foot of the card. The photograph is the
+                  argument here, so the scrim only covers the caption. */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 via-38% to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 via-28% to-transparent to-66%"
               />
 
               <div className="relative flex h-full flex-col justify-end p-6 md:p-9">

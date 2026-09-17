@@ -45,7 +45,11 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex h-[74px] max-w-[1500px] items-center justify-between gap-6 px-5 md:h-[86px] md:px-8">
-        <a href="#main" aria-label={`${company.name} home`} className="shrink-0">
+        <a
+          href="#main"
+          aria-label={`${company.name} home`}
+          className="inline-flex min-h-11 shrink-0 items-center"
+        >
           <Logo />
         </a>
 

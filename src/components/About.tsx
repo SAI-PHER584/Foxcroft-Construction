@@ -26,10 +26,12 @@ export function About() {
             {/* h-full lets the grid row height, set by the copy, drive these
                 two frames so the column bottoms line up. */}
             <div className="flex h-full min-h-[520px] flex-col gap-3">
+              {/* Both frames show work that appears nowhere else on the page,
+                  so the section earns its own photography. */}
               <Reveal className="relative flex-[3] overflow-hidden bg-ink">
                 <Image
-                  src="/work/loft-stair.jpg"
-                  alt="A new pine staircase and balustrade fitted in a loft conversion in Bare"
+                  src="/work/frame-joiners.jpg"
+                  alt="Two Foxcroft joiners working inside the timber frame with the roof trusses already up"
                   fill
                   sizes="(max-width: 1023px) 100vw, 38vw"
                   className="object-cover"
@@ -38,8 +40,8 @@ export function About() {
 
               <Reveal delay={110} className="relative flex-[2] overflow-hidden bg-ink">
                 <Image
-                  src="/work/bathroom-bare.jpg"
-                  alt="A refitted bathroom in Bare with mosaic tiling and a shower over the bath"
+                  src="/work/loft-stair.jpg"
+                  alt="A new pine staircase and balustrade fitted in a loft conversion in Bare"
                   fill
                   sizes="(max-width: 1023px) 100vw, 38vw"
                   className="object-cover"

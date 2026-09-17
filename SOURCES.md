@@ -37,8 +37,47 @@ Captured from the live site on 2026-09-16.
 | 07983 407984 / 01524 422393 | `[src: site]` footer and tel: links |
 | Trades as Foxcroft Roofing on Facebook | `[src: site]` links to facebook.com/FoxcroftRoofing |
 
-All photography on the page is Foxcroft's own, taken from their live galleries.
 No stock imagery is used.
+
+## Photography provenance
+
+The live site has four galleries, holding 45 full size originals between them:
+`/images/nursery/` (25), `/images/bare-loft/` (7), `/images/windermere/` (6)
+and `/images/bathroom-bare/` (3). Crawled 2026-09-17.
+
+Eleven of the photographs on the page were matched back to a named original in
+those galleries by image comparison, and are used at the original's own
+resolution. The earlier versions in this repo had been scaled **up** (for
+example the bathroom from 720x960 to 1100x1467), which added file size and no
+detail. That has been undone.
+
+**Three images cannot be traced to the live site.** `nursery-deck.jpg`,
+`nursery-front.jpg` and `nursery-mossgate.jpg` are all 1400x1050. Nothing in
+any gallery uses that aspect ratio, and the closest matches score far outside
+the range of a true match. More to the point, every one of the 25 nursery
+photographs on the live site shows work in progress: **there is no finished
+photograph of the nursery building anywhere on the current site.**
+
+Those three are the only images we hold of a completed building, so they are
+doing the heaviest lifting on the page.
+
+**Question for the client:** where did these three come from, and do we have
+the right to use them? If they came off the Facebook page or a phone, we should
+get the originals. `[UNVERIFIED — confirm with client]`
+
+## The watermark
+
+Two of the six Windermere kitchen photographs carry a burned-in green overlay
+reading "Foxcroft Construction all enquiries 07983407984". The best of the six
+(`/images/windermere/10626584...jpg`, a wide view taking in the island, the
+oak worktops and the full run of units) is one of them.
+
+The overlay sits on flat ceiling and wall, so it was reconstructed by masking
+the glyphs themselves and diffusing the surrounding wall tone inward. Nothing
+structural in the photograph was repainted or invented.
+
+**Question for the client:** does he have these kitchen photographs without the
+phone number burned in? `[UNVERIFIED — confirm with client]`
 
 ## The logo
 
