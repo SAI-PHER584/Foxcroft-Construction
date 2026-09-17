@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import { company } from "@/lib/content";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 // Archivo carries a width axis, so headlines can run genuinely expanded
@@ -21,7 +22,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.foxcroft-construction.co.uk"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${company.name} | Builders & Roofers in Morecambe, Lancaster & Heysham`,
     template: `%s | ${company.name}`,
@@ -40,10 +41,28 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     siteName: company.name,
+    url: "/",
     title: `${company.name} | Builders & Roofers in Morecambe`,
     description:
       "Roofers, builders, slaters and joiners covering Morecambe, Lancaster and Heysham since 1989.",
-    images: ["/work/nursery-mossgate.jpg"],
+    // 1200x630 is what LinkedIn, Facebook and Slack all render at. The
+    // explicit dimensions let a scraper lay the card out before it has
+    // finished fetching the file.
+    images: [
+      {
+        url: "/og/share-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: "A Foxcroft timber frame standing on its floor deck against open sky",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${company.name} | Builders & Roofers in Morecambe`,
+    description:
+      "Roofers, builders, slaters and joiners covering Morecambe, Lancaster and Heysham since 1989.",
+    images: ["/og/share-card.jpg"],
   },
   alternates: { canonical: "/" },
 };
