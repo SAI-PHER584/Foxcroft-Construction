@@ -1,26 +1,190 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Daylight and materials: plaster, stone, timber shadow. Foxcroft's logo
+     green is the single accent, deepened so it holds on a light ground. */
+  --color-paper: #f6f4ef;
+  --color-stone: #ebe7de;
+  --color-line: #d8d2c5;
+  --color-line-strong: #a9a091;
+
+  --color-ink: #1c1b18;
+  --color-ink-2: #33302a;
+
+  --color-mute: #5e594f;
+  --color-mute-dark: #b9b3a6;
+
+  --color-brand: #3f6b1c;
+  --color-brand-bright: #7dc242;
+  --color-brand-wash: #e6ecd9;
+
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-base: 380ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 118%;
+    letter-spacing: -0.028em;
+    line-height: 0.92;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Technical micro-label. Drafting-sheet flavour, used for indices and specs. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .display-wide {
+    font-stretch: 125%;
+  }
+
+  .measure {
+    max-width: 62ch;
+  }
+
+  /* Hairline grid rules, like a setting-out drawing */
+  .hairline-x {
+    background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, currentColor 22%, transparent) 0 1px,
+      transparent 1px
+    );
+  }
+}
+
+/* Scroll reveal. Hidden state is gated behind [data-js] so the page renders
+   fully visible if scripting never runs. */
+[data-js] [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition:
+    opacity 560ms var(--ease-out-soft),
+    transform 560ms var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-js] [data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@layer utilities {
+  .rise {
+    animation: rise 760ms var(--ease-out-soft) both;
+    animation-delay: var(--rise-delay, 0ms);
+  }
+
+  .settle {
+    animation: settle 1.5s var(--ease-out-soft) both;
+  }
+
+  .drift-track {
+    animation: drift 44s linear infinite;
+    will-change: transform;
+  }
+
+  .drift-host:hover .drift-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-js] [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .rise,
+  .settle,
+  .drift-track {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

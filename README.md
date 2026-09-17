@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Foxcroft Construction — homepage concept
 
-## Getting Started
+A redesign concept for the landing page at foxcroft-construction.co.uk.
+Not affiliated with, or endorsed by, Foxcroft Construction.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For an accurate look at images and layout, use a production build. Next's dev
+image optimiser can stall on large source photos.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build && npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+- Next.js 16 App Router, React 19, all sections are Server Components
+- Client components only where they own state: the header menu, the contact
+  form, and the `Reveal` scroll wrapper
+- Tailwind v4, design tokens in `src/app/globals.css` under `@theme`
+- Archivo (variable, width axis) for display and body, IBM Plex Mono for
+  technical micro-labels, via `next/font`
+- Phosphor icons, imported from `/ssr` in Server Components
 
-To learn more about Next.js, take a look at the following resources:
+## Where things live
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path | What |
+|---|---|
+| `src/lib/content.ts` | Every piece of copy and every fact, in one file |
+| `SOURCES.md` | Where each factual claim came from, and what is missing |
+| `src/app/globals.css` | Colour, type, easing and duration tokens |
+| `src/components/Logo.tsx` | Foxcroft's mark, redrawn as vector |
+| `public/work/` | Foxcroft's own project photographs |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- All photography is Foxcroft's own, pulled from their live galleries. No stock.
+- The logo is Foxcroft's own mark redrawn as SVG. The palette is built from its
+  green. See `SOURCES.md`.
+- The contact form validates and shows its success state, but has no mail
+  transport behind it. Wire up a route handler before this goes anywhere real.
+- Scroll reveals are gated behind a `data-js` attribute set by an inline script,
+  so the page renders fully visible if scripting fails.
+- Read `SOURCES.md` before showing this to the client. It lists the questions
+  worth asking them, including the two conflicting founding-date figures on the
+  current site.
