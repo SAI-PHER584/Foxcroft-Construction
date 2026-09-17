@@ -64,6 +64,13 @@ export const metadata: Metadata = {
       "Roofers, builders, slaters and joiners covering Morecambe, Lancaster and Heysham since 1989.",
     images: ["/og/share-card.jpg"],
   },
+  // A concept on a domain the client does not own, carrying their real name,
+  // address and phone numbers. Being found through search buys nothing here
+  // and risks someone taking it for the official site, so keep it out of the
+  // index. This does not affect link previews: LinkedIn and Slack read the og
+  // tags whatever this says. A robots.txt Disallow would break them, so the
+  // directive belongs here and not there.
+  robots: { index: false, follow: false },
   alternates: { canonical: "/" },
 };
 
